@@ -3,377 +3,546 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>9irls - AI-Powered Empowerment for Future Leaders</title>
-    <meta name="description" content="9irls: Leveraging AI to empower girls through sports, games, and leadership activities. Join us in building the AI-enhanced future of female leadership.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'girls-blue': '#1E90FF',
-                        'girls-green': '#32CD32',
-                        'girls-orange': '#FFA500',
-                        'girls-purple': '#8A2BE2',
-                        'girls-light': '#F0F8FF',
-                        'girls-text': '#333333', // Added this line for text color
-                    },
-                    fontFamily: {
-                        'sans': ['Roboto', 'sans-serif'],
-                        'headers': ['Montserrat', 'sans-serif'],
-                    },
-                },
-            },
+    <title>9irls.com - Empowering Girls to Think Like Kings</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .changing-image {
+            opacity: 0;
         }
-    </script>
-    <style type="text/tailwindcss">
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap');
-        
-        @layer utilities {
-            .text-shadow {
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            }
+        .avatar {
+            width: 100px;
+            height: 100px;
         }
     </style>
 </head>
-<body class="bg-girls-light text-girls-text font-sans">
-    <header class="fixed w-full z-50 transition-all duration-300 bg-white bg-opacity-90 backdrop-blur-md">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="text-3xl font-bold font-headers text-girls-blue">9irls<span class="text-girls-orange">.ai</span></a>
-            <nav class="hidden md:flex space-x-6">
-                <a href="#ai-sports" class="text-gray-700 hover:text-girls-blue transition-colors">AI Sports</a>
-                <a href="#ai-games" class="text-gray-700 hover:text-girls-blue transition-colors">AI Games</a>
-                <a href="#ai-leadership" class="text-gray-700 hover:text-girls-blue transition-colors">AI Leadership</a>
-                <a href="#success-stories" class="text-gray-700 hover:text-girls-blue transition-colors">Success Stories</a>
-                <a href="#join" class="text-gray-700 hover:text-girls-blue transition-colors">Join Us</a>
-            </nav>
-            <div class="hidden md:block">
-                <a href="#join" class="bg-girls-blue text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-opacity font-bold">Get AI-Powered</a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden text-girls-blue">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+<body class="font-sans bg-gray-100">
+    <header class="bg-purple-600 text-white">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">9irls.com</a>
+            <button class="md:hidden" id="menu-toggle">
+                <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
-        </div>
+            <ul class="hidden md:flex space-x-4">
+                <li><a href="#activities" class="hover:text-pink-300">Activities</a></li>
+                <li><a href="#events" class="hover:text-pink-300">Events</a></li>
+                <li><a href="#blog" class="hover:text-pink-300">Blog</a></li>
+                <li><a href="#about" class="hover:text-pink-300">About</a></li>
+                <li><a href="#contact" class="hover:text-pink-300">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div id="mobile-menu" class="fixed inset-0 bg-white bg-opacity-95 z-50 hidden">
-        <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="#ai-sports" class="text-2xl text-girls-blue hover:text-girls-green transition-colors font-headers">AI Sports</a>
-            <a href="#ai-games" class="text-2xl text-girls-blue hover:text-girls-green transition-colors font-headers">AI Games</a>
-            <a href="#ai-leadership" class="text-2xl text-girls-blue hover:text-girls-green transition-colors font-headers">AI Leadership</a>
-            <a href="#success-stories" class="text-2xl text-girls-blue hover:text-girls-green transition-colors font-headers">Success Stories</a>
-            <a href="#join" class="bg-girls-blue text-white px-8 py-3 rounded-full text-xl hover:bg-opacity-90 transition-opacity font-bold">Get AI-Powered</a>
-        </div>
-        <button id="close-menu" class="absolute top-4 right-4 text-girls-blue">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
+    <div class="mobile-menu hidden bg-purple-600 text-white p-4" id="mobile-menu">
+        <ul class="space-y-2">
+            <li><a href="#activities" class="block">Activities</a></li>
+            <li><a href="#events" class="block">Events</a></li>
+            <li><a href="#blog" class="block">Blog</a></li>
+            <li><a href="#about" class="block">About</a></li>
+            <li><a href="#contact" class="block">Contact</a></li>
+        </ul>
     </div>
 
     <main>
-        <section class="hero-section min-h-screen flex items-center bg-cover bg-center bg-fixed" style="background-image: url('https://source.unsplash.com/random/1920x1080/?technology,sports');">
-            <div class="container mx-auto px-4 text-center relative z-10" data-aos="fade-up">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white text-shadow font-headers">AI-Powered <span class="text-girls-orange">Empowerment</span> for Future <span class="text-girls-green">Leaders</span></h1>
-                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white text-shadow">Leveraging cutting-edge AI to revolutionize how girls engage in sports, games, and leadership development.</p>
-                <a href="#join" class="bg-girls-blue text-white text-lg px-8 py-3 rounded-full hover:bg-opacity-90 transition-opacity inline-block font-bold">Start Your AI Journey</a>
-            </div>
-            <div class="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
-        </section>
-
-        <section id="ai-sports" class="py-20 bg-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-16 font-headers" data-aos="fade-up">AI-Enhanced <span class="text-girls-green">Sports Training</span></h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://source.unsplash.com/random/300x200/?AI,football" alt="AI-powered football training" class="w-full h-48 object-cover rounded-lg mb-4">
-                        <h3 class="text-2xl font-semibold mb-4 font-headers">AI Football Coach</h3>
-                        <p class="text-gray-600">Our AI analyzes your movements and provides personalized training plans to improve your skills on the field.</p>
-                    </div>
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://source.unsplash.com/random/300x200/?AI,basketball" alt="AI-assisted basketball training" class="w-full h-48 object-cover rounded-lg mb-4">
-                        <h3 class="text-2xl font-semibold mb-4 font-headers">AI Basketball Analyzer</h3>
-                        <p class="text-gray-600">Get real-time feedback on your shooting form and strategy with our AI-powered basketball analysis tool.</p>
-                    </div>
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://source.unsplash.com/random/300x200/?AI,tennis" alt="AI tennis partner" class="w-full h-48 object-cover rounded-lg mb-4">
-                        <h3 class="text-2xl font-semibold mb-4 font-headers">AI Tennis Partner</h3>
-                        <p class="text-gray-600">Practice anytime with our AI tennis partner, which adapts to your skill level and helps you improve your game.</p>
+        <section id="hero" class="relative bg-purple-100 py-20">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Think Like a King, Lead Like a Queen</h1>
+                    <p class="text-xl mb-6">Empowering girls to conquer every field - from the pitch to the boardroom, from labs to gaming arenas!</p>
+                    <a href="#activities" class="bg-pink-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-pink-600 transition duration-300 flex items-center">
+                        Explore Activities
+                        <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                    </a>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <img src="/images/girlsempowerment.webp" alt="Girls empowerment" class="rounded-lg shadow-lg">
+                    <div id="changing-image" class="changing-image absolute bottom-0 right-0 w-1/2 h-1/2 rounded-lg shadow-lg overflow-hidden">
+                        <img src="/api/placeholder/400/300" alt="Girl Footballer" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="ai-games" class="py-20 bg-girls-light">
+        <section id="activities" class="py-16 bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-16 font-headers" data-aos="fade-up">AI-Powered <span class="text-girls-purple">Gaming Experiences</span></h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-2xl font-semibold mb-4 font-headers">AI Strategy Games</h3>
-                        <ul class="space-y-2 text-gray-600">
-                            <li>• Play against adaptive AI opponents that match and challenge your skill level</li>
-                            <li>• Receive personalized tips and strategies based on your playing style</li>
-                            <li>• Engage in AI-generated scenarios that test your decision-making skills</li>
-                            <li>• Track your progress with AI-powered analytics and insights</li>
-                        </ul>
+                <h2 class="text-3xl font-bold mb-8 text-center">Rule Your Kingdom</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-purple-100 rounded-lg p-6 shadow-md">
+                        <i data-lucide="dribbble" class="w-12 h-12 text-purple-600 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-4">Sports</h3>
+                        <p class="mb-4">Dominate the field like a true monarch. Learn tactics, skills, and leadership.</p>
+                        <a href="#" class="text-purple-600 font-semibold hover:text-purple-800 flex items-center">
+                            Learn More
+                            <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
+                        </a>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                        <h3 class="text-2xl font-semibold mb-4 font-headers">AI Collaborative Games</h3>
-                        <ul class="space-y-2 text-gray-600">
-                            <li>• Team up with AI partners in multiplayer games to enhance teamwork skills</li>
-                            <li>• Experience dynamic, AI-generated game worlds that evolve based on your choices</li>
-                            <li>• Participate in AI-moderated debates and problem-solving challenges</li>
-                            <li>• Develop emotional intelligence through interactions with AI characters</li>
-                        </ul>
+                    <div class="bg-pink-100 rounded-lg p-6 shadow-md">
+                        <i data-lucide="flask-conical" class="w-12 h-12 text-pink-600 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-4">STEM Activities</h3>
+                        <p class="mb-4">Rule the world of science and tech. Experiment, innovate, and lead the future.</p>
+                        <a href="#" class="text-purple-600 font-semibold hover:text-purple-800 flex items-center">
+                            Discover STEM
+                            <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                    <div class="bg-blue-100 rounded-lg p-6 shadow-md">
+                        <i data-lucide="gamepad-2" class="w-12 h-12 text-blue-600 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-4">Gaming</h3>
+                        <p class="mb-4">Conquer virtual worlds. Master strategy, teamwork, and become an e-sports queen.</p>
+                        <a href="#" class="text-purple-600 font-semibold hover:text-purple-800 flex items-center">
+                            Game On
+                            <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                    <div class="bg-green-100 rounded-lg p-6 shadow-md">
+                        <i data-lucide="palette" class="w-12 h-12 text-green-600 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-4">Traditional Arts</h3>
+                        <p class="mb-4">Express your royal creativity. Dance, paint, and cook like the queen you are.</p>
+                        <a href="#" class="text-purple-600 font-semibold hover:text-purple-800 flex items-center">
+                            Explore More
+                            <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="ai-leadership" class="py-20 bg-white">
+<section id="weekly-schedule" class="py-16 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-center text-white">Royal Weekly Schedule</h2>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <div id="schedule-controls" class="mb-6 flex flex-wrap justify-between items-center">
+                <button id="prev-week" class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition duration-300 mb-2 sm:mb-0">
+                    <i data-lucide="chevron-left" class="w-5 h-5 inline-block"></i> Previous Week
+                </button>
+                <h3 id="current-week" class="text-xl font-bold text-center w-full sm:w-auto mb-2 sm:mb-0">Week of <span id="week-start-date"></span></h3>
+                <button id="next-week" class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition duration-300">
+                    Next Week <i data-lucide="chevron-right" class="w-5 h-5 inline-block"></i>
+                </button>
+            </div>
+            <div class="overflow-x-auto">
+                <div id="schedule-grid" class="grid grid-cols-8 gap-2 min-w-max">
+                    <!-- Schedule content will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        <section id="events" class="py-16 bg-gray-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-16 font-headers" data-aos="fade-up">AI-Driven <span class="text-girls-orange">Leadership Development</span></h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-                        <div class="bg-girls-blue rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                <h2 class="text-3xl font-bold mb-8 text-center">Royal Events</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="images/9irlsfootball.webp" alt="Girls Football Tournament" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Queens of the Field</h3>
+                            <p class="text-gray-600 mb-4">Join our annual football tournament and showcase your skills!</p>
+                            <a href="https://www.eventbrite.com" target="_blank" class="text-purple-600 font-semibold hover:text-purple-800">Register on Eventbrite</a>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-4 font-headers">AI Public Speaking Coach</h3>
-                        <p class="text-gray-600">Improve your public speaking skills with real-time AI feedback on your delivery, body language, and content.</p>
                     </div>
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                        <div class="bg-girls-green rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="images/9girlsstem.webp" alt="STEM Summer Workshop" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Tech Princesses Summit</h3>
+                            <p class="text-gray-600 mb-4">A week-long adventure into the world of science and technology!</p>
+                            <a href="https://www.luma.com" target="_blank" class="text-purple-600 font-semibold hover:text-purple-800">Sign up on Luma</a>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-4 font-headers">AI Mentorship Matching</h3>
-                        <p class="text-gray-600">Our AI pairs you with the perfect mentor based on your goals, personality, and learning style.</p>
                     </div>
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                        <div class="bg-girls-orange rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round"
-                                                                                                                                                         <div class="bg-girls-orange rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="images/9girlsgamer.webp" alt="Girls Gaming Championship" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Gamer Queens Championship</h3>
+                            <p class="text-gray-600 mb-4">Compete in our online gaming tournament and win amazing prizes!</p>
+                            <a href="#" class="text-purple-600 font-semibold hover:text-purple-800">Register in our app</a>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-4 font-headers">AI Project Manager</h3>
-                        <p class="text-gray-600">Lead community projects with our AI assistant, helping you plan, delegate, and track progress effectively.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="success-stories" class="py-20 bg-girls-light">
+        <section id="blog" class="py-16 bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-16 font-headers" data-aos="fade-up">AI-Powered <span class="text-girls-purple">Success Stories</span></h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://source.unsplash.com/random/300x200/?girl,tech" alt="Sarah's AI Success Story" class="w-full h-48 object-cover rounded-lg mb-4">
-                        <h3 class="text-2xl font-semibold mb-4 font-headers">Sarah's AI-Assisted Coding Journey</h3>
-                        <p class="text-gray-600 mb-4">With the help of our AI coding tutor, Sarah went from a complete beginner to winning her school's hackathon in just six months.</p>
-                        <a href="#" class="text-girls-blue hover:underline font-bold">Read Sarah's Story</a>
+                <h2 class="text-3xl font-bold mb-8 text-center">Royal Decrees (Blog)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden">
+                        <img src="/api/placeholder/400/300" alt="Rising Stars in Women's Sports" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Rising Stars in Women's Sports</h3>
+                            <p class="text-gray-600 mb-4">Meet the young talents shaping the future of women's sports and breaking barriers.</p>
+                            <a href="#" class="text-purple-600 font-semibold hover:text-purple-800">Read More</a>
+                        </div>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://source.unsplash.com/random/300x200/?girl,sport" alt="Emily's AI Sports Story" class="w-full h-48 object-cover rounded-lg mb-4">
-                        <h3 class="text-2xl font-semibold mb-4 font-headers">Emily's AI-Enhanced Soccer Skills</h3>
-                        <p class="text-gray-600 mb-4">Using our AI soccer coach, Emily improved her game dramatically and earned a spot on the national youth team.</p>
-                        <a href="#" class="text-girls-blue hover:underline font-bold">Read Emily's Story</a>
+                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden">
+                        <img src="/api/placeholder/400/300" alt="Girls in STEM: Bridging the Gap" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Girls in STEM: Bridging the Gap</h3>
+                            <p class="text-gray-600 mb-4">Exploring initiatives and success stories of girls excelling in science, technology, engineering, and mathematics.</p>
+                            <a href="#" class="text-purple-600 font-semibold hover:text-purple-800">Read More</a>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden">
+                        <img src="/api/placeholder/400/300" alt="The Rise of Girl Gamers" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">The Rise of Girl Gamers</h3>
+                            <p class="text-gray-600 mb-4">From casual gaming to professional e-sports, girls are making their mark in the gaming world.</p>
+                            <a href="#" class="text-purple-600 font-semibold hover:text-purple-800">Read More</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="join" class="py-20 bg-white relative overflow-hidden">
-            <div class="container mx-auto px-4 relative z-10">
-                <h2 class="text-4xl font-bold text-center mb-8 font-headers" data-aos="fade-up">Join the AI-Powered <span class="text-girls-green">9irls Movement</span></h2>
-                <p class="text-xl text-center text-gray-600 mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Ready to unlock your potential with cutting-edge AI technology? Join 9irls today and start your journey to becoming a tech-savvy leader of tomorrow!</p>
-                <form id="join-form" class="max-w-md mx-auto bg-girls-light p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                    <div class="mb-6">
-                        <label for="name" class="block text-gray-700 mb-2 font-bold">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your name" class="w-full px-4 py-3 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-girls-blue" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="email" class="block text-gray-700 mb-2 font-bold">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-girls-blue" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="interest" class="block text-gray-700 mb-2 font-bold">I'm interested in:</label>
-                        <select id="interest" name="interest" class="w-full px-4 py-3 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-girls-blue" required>
-                            <option value="">Select your interest</option>
-                            <option value="ai-sports">AI-Enhanced Sports</option>
-                            <option value="ai-games">AI-Powered Games</option>
-                            <option value="ai-leadership">AI Leadership Development</option>
-                            <option value="all">All of the above</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="w-full bg-girls-blue text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition-opacity text-lg font-bold">
-                        Start My AI Journey
-                    </button>
-                </form>
-                <p class="text-center text-gray-500 mt-6">By joining, you'll get access to our AI-powered programs, personalized recommendations, and a supportive community of tech-savvy girls!</p>
+        <section id="avatars" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center">Choose Your Royal Avatar</h2>
+                <div class="flex justify-center space-x-8">
+                    <svg class="avatar" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="#FFD700"/>
+                        <circle cx="35" cy="40" r="5" fill="#000"/>
+                        <circle cx="65" cy="40" r="5" fill="#000"/>
+                        <path d="M 30 60 Q 50 70 70 60" fill="none" stroke="#000" stroke-width="3"/>
+                    </svg>
+                    <svg class="avatar" viewBox="0 0 100 100">
+                        <rect x="10" y="10" width="80" height="80" fill="#4B0082"/>
+                        <circle cx="35" cy="40" r="5" fill="#FFF"/>
+                        <circle cx="65" cy="40" r="5" fill="#FFF"/>
+                        <path d="M 30 60 Q 50 70 70 60" fill="none" stroke="#FFF" stroke-width="3"/>
+                    </svg>
+                    <svg class="avatar" viewBox="0 0 100 100">
+                        <polygon points="50,10 10,90 90,90" fill="#008000"/>
+                        <circle cx="35" cy="50" r="5" fill="#FFF"/>
+                        <circle cx="65" cy="50" r="5" fill="#FFF"/>
+                        <path d="M 30 70 Q 50 80 70 70" fill="none" stroke="#FFF" stroke-width="3"/>
+                    </svg>
+                </div>
             </div>
-            <div class="absolute inset-0 opacity-10">
-                <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="#1E90FF" stroke-width="0.5"/>
-                    <circle cx="50" cy="50" r="40" fill="none" stroke="#1E90FF" stroke-width="0.5"/>
-                    <circle cx="50" cy="50" r="30" fill="none" stroke="#1E90FF" stroke-width="0.5"/>
-                    <circle cx="50" cy="50" r="20" fill="none" stroke="#1E90FF" stroke-width="0.5"/>
-                </svg>
+        </section>
+
+       
+<section id="parental-consent" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center">Parental Consent</h2>
+                <div class="max-w-2xl mx-auto bg-purple-100 p-8 rounded-lg shadow-md">
+                    <p class="mb-6">At 9irls.com, we prioritize the safety and privacy of our young users. Before participating in any activities or events, we require parental consent. Please fill out the form below:</p>
+                    <form id="consent-form" class="space-y-4">
+                        <div>
+                            <label for="parent-name" class="block mb-2">Parent/Guardian Name:</label>
+                            <input type="text" id="parent-name" name="parent-name" required class="w-full px-3 py-2 border rounded-md">
+                        </div>
+                        <div>
+                            <label for="child-name" class="block mb-2">Child's Name:</label>
+                            <input type="text" id="child-name" name="child-name" required class="w-full px-3 py-2 border rounded-md">
+                        </div>
+                        <div>
+                            <label for="parent-email" class="block mb-2">Parent/Guardian Email:</label>
+                            <input type="email" id="parent-email" name="parent-email" required class="w-full px-3 py-2 border rounded-md">
+                        </div>
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" required class="mr-2">
+                                I consent to my child's participation in 9irls.com activities and events.
+                            </label>
+                        </div>
+                        <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-md hover:bg-purple-700">Submit Consent</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center">Contact the Royal Court</h2>
+                <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="name" class="block mb-2">Your Name:</label>
+                            <input type="text" id="name" name="name" required class="w-full px-3 py-2 border rounded-md">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2">Your Email:</label>
+                            <input type="email" id="email" name="email" required class="w-full px-3 py-2 border rounded-md">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2">Your Message:</label>
+                            <textarea id="message" name="message" required class="w-full px-3 py-2 border rounded-md h-32"></textarea>
+                        </div>
+                        <button type="submit" class="bg-pink-500 text-white px-6 py-2 rounded-md hover:bg-pink-600">Send Message</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-girls-blue text-white py-12">
+    <footer class="bg-purple-600 text-white py-8">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-2xl font-bold mb-4 font-headers">9irls<span class="text-girls-orange">.ai</span></h3>
-                    <p class="text-girls-light">Empowering girls with AI-driven solutions for sports, games, and leadership development.</p>
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">9irls.com</h3>
+                    <p>Empowering girls to think like kings and lead like queens.</p>
                 </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 font-headers">Quick Links</h4>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="#ai-sports" class="text-girls-light hover:text-white transition-colors">AI Sports</a></li>
-                        <li><a href="#ai-games" class="text-girls-light hover:text-white transition-colors">AI Games</a></li>
-                        <li><a href="#ai-leadership" class="text-girls-light hover:text-white transition-colors">AI Leadership</a></li>
-                        <li><a href="#success-stories" class="text-girls-light hover:text-white transition-colors">Success Stories</a></li>
-                        <li><a href="#join" class="text-girls-light hover:text-white transition-colors">Join Us</a></li>
+                        <li><a href="#activities" class="hover:text-pink-300">Activities</a></li>
+                        <li><a href="#events" class="hover:text-pink-300">Events</a></li>
+                        <li><a href="#blog" class="hover:text-pink-300">Blog</a></li>
+                        <li><a href="#avatars" class="hover:text-pink-300">Avatars</a></li>
+                        <li><a href="#parental-consent" class="hover:text-pink-300">Parental Consent</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 font-headers">Resources</h4>
-                    <ul class="space-y-2">
-                        <li><a href="/blog" class="text-girls-light hover:text-white transition-colors">AI Blog</a></li>
-                        <li><a href="/events" class="text-girls-light hover:text-white transition-colors">AI Events</a></li>
-                        <li><a href="/ai-tools" class="text-girls-light hover:text-white transition-colors">AI Tools</a></li>
-                        <li><a href="/faq" class="text-girls-light hover:text-white transition-colors">FAQ</a></li>
-                    </ul>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <p class="flex items-center">
+                        <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+                        info@9irls.com
+                    </p>
+                    <p class="flex items-center">
+                        <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+                        (123) 456-7890
+                    </p>
                 </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 font-headers">Connect With Us</h4>
+                <div class="w-full md:w-1/4">
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-girls-light hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        <a href="#" class="hover:text-pink-300">
+                            <i data-lucide="facebook" class="w-6 h-6"></i>
                         </a>
-                        <a href="#" class="text-girls-light hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                        <a href="#" class="hover:text-pink-300">
+                            <i data-lucide="twitter" class="w-6 h-6"></i>
                         </a>
-                        <a href="#" class="text-girls-light hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.38.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                        <a href="#" class="hover:text-pink-300">
+                            <i data-lucide="instagram" class="w-6 h-6"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="mt-12 text-center">
-                <p>&copy; 2024 9irls.ai. All rights reserved. Empowering girls with AI to become the leaders of tomorrow.</p>
+            <div class="mt-8 text-center">
+                <p>&copy; 2024 9irls.com. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS
-            AOS.init({
-                duration: 1000,
-                once: true,
-            });
+        // Initialize Lucide icons
+        lucide.createIcons();
 
-            // Sticky header
-            const header = document.querySelector('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.classList.add('bg-opacity-90', 'backdrop-blur-md');
-                } else {
-                    header.classList.remove('bg-opacity-90', 'backdrop-blur-md');
-                }
-            });
-
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const closeMenu = document.getElementById('close-menu');
-
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            closeMenu.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                    // Close mobile menu if open
-                    mobileMenu.classList.add('hidden');
-                });
-            });
-
-            // GSAP Animations
-            gsap.registerPlugin(ScrollTrigger);
-
-            // Animate sections
-            gsap.utils.toArray('section').forEach(section => {
-                gsap.from(section.querySelectorAll('h2, p, .grid > div'), {
-                    y: 50,
-                    opacity: 0,
-                    duration: 1,
-                    stagger: 0.2,
-                    scrollTrigger: {
-                        trigger: section,
-                        start: "top 80%",
-                        end: "bottom 20%",
-                        toggleActions: "play none none reverse"
-                    }
-                });
-            });
-
-            // Parallax effect for background SVGs
-            gsap.utils.toArray('.absolute.inset-0').forEach(layer => {
-                const depth = 0.2;
-                const movement = -(layer.offsetHeight * depth);
-                gsap.fromTo(layer, {y: 0}, {
-                    y: movement,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: layer.parentElement,
-                        start: "top top",
-                        end: "bottom top",
-                        scrub: true
-                    }
-                });
-            });
-
-            // Form submission
-            const form = document.getElementById('join-form');
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                // Here you would typically handle the form submission with AJAX
-                // For this example, we'll just show an alert
-                alert("Thanks for joining 9irls.ai! Our AI will analyze your information and provide personalized recommendations soon.");
-            });
-
-            // Load AI-powered components
-            loadAIComponents();
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
-        function loadAIComponents() {
-            // Simulating AI-powered component loading
-            console.log("Loading AI Sports Analyzer...");
-            console.log("Loading AI Game Engine...");
-            console.log("Loading AI Leadership Coach...");
-            
-            // Here you would typically make API calls to your AI backend
-            // and update the UI based on the responses
-            
-            setTimeout(() => {
-                console.log("All AI components loaded successfully!");
-            }, 2000);
+        // GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".changing-image", {opacity: 0, duration: 1, delay: 0.5});
+
+        const images = [
+            "/api/placeholder/400/300?text=Footballer",
+            "/api/placeholder/400/300?text=CEO",
+            "/api/placeholder/400/300?text=Scientist",
+            "/api/placeholder/400/300?text=Gamer"
+        ];
+        let currentIndex = 0;
+
+        function changeImage() {
+            const nextIndex = (currentIndex + 1) % images.length;
+            gsap.to("#changing-image img", {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    document.querySelector("#changing-image img").src = images[nextIndex];
+                    gsap.to("#changing-image img", {opacity: 1, duration: 0.5});
+                    currentIndex = nextIndex;
+                }
+            });
         }
+
+        setInterval(changeImage, 5000);
+
+        // Animate sections on scroll
+        gsap.from("#activities .grid > div", {
+            scrollTrigger: {
+                trigger: "#activities",
+                start: "top 80%"
+            },
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 1
+        });
+
+        gsap.from("#events .grid > div", {
+            scrollTrigger: {
+                trigger: "#events",
+                start: "top 80%"
+            },
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 1
+        });
+
+        gsap.from("#blog .grid > div", {
+            scrollTrigger: {
+                trigger: "#blog",
+                start: "top 80%"
+            },
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 1
+        });
+
+        gsap.from("#avatars svg", {
+            scrollTrigger: {
+                trigger: "#avatars",
+                start: "top 80%"
+            },
+            scale: 0,
+            opacity: 0,
+            stagger: 0.2,
+            duration: 1
+        });
+
+        // Form submission (you would need to implement the actual submission logic)
+        document.getElementById('consent-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your consent. We will process your submission.');
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message. We will get back to you soon.');
+        });
     </script>
+<script>
+// Weekly Schedule Functionality
+const scheduleGrid = document.getElementById('schedule-grid');
+const weekStartDate = document.getElementById('week-start-date');
+const prevWeekBtn = document.getElementById('prev-week');
+const nextWeekBtn = document.getElementById('next-week');
+
+let currentWeekStart = new Date();
+currentWeekStart.setDate(currentWeekStart.getDate() - currentWeekStart.getDay() + 1);
+
+const scheduleData = {
+    "Monday": [
+        { time: "3:00 PM", ages: "5-8", activity: "Dance Party", online: true, video: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+        { time: "4:00 PM", ages: "9-12", activity: "Science Club", online: false },
+        { time: "5:00 PM", ages: "13-16", activity: "Coding Workshop", online: true, video: "https://www.youtube.com/embed/v7AYKMP6rOE" }
+    ],
+    "Tuesday": [
+        { time: "3:00 PM", ages: "5-8", activity: "Story Time", online: true, video: "https://www.youtube.com/embed/2tMI9iDCgnQ" },
+        { time: "4:00 PM", ages: "9-12", activity: "Art Class", online: false },
+        { time: "5:00 PM", ages: "13-16", activity: "Debate Club", online: true, video: "https://www.youtube.com/embed/ml6cT4AZdqI" }
+    ],
+    "Wednesday": [
+        { time: "3:00 PM", ages: "5-8", activity: "Mini Sports", online: false },
+        { time: "4:00 PM", ages: "9-12", activity: "Math Games", online: true, video: "https://www.youtube.com/embed/GHD7Z19vtLw" },
+        { time: "5:00 PM", ages: "13-16", activity: "Photography", online: false }
+    ],
+    "Thursday": [
+        { time: "3:00 PM", ages: "5-8", activity: "Arts & Crafts", online: true, video: "https://www.youtube.com/embed/1EwYLZmkUxo" },
+        { time: "4:00 PM", ages: "9-12", activity: "Robotics", online: false },
+        { time: "5:00 PM", ages: "13-16", activity: "Business 101", online: true, video: "https://www.youtube.com/embed/4pKly2JojMw" }
+    ],
+    "Friday": [
+        { time: "3:00 PM", ages: "5-8", activity: "Music Time", online: true, video: "https://www.youtube.com/embed/5if4cjO5nxo" },
+        { time: "4:00 PM", ages: "9-12", activity: "Junior Chefs", online: false },
+        { time: "5:00 PM", ages: "13-16", activity: "Film Making", online: true, video: "https://www.youtube.com/embed/C_CGxoj-LiM" }
+    ],
+    "Saturday": [
+        { time: "10:00 AM", ages: "All", activity: "Family Fun Day", online: false },
+        { time: "2:00 PM", ages: "All", activity: "Outdoor Adventure", online: false }
+    ],
+    "Sunday": [
+        { time: "11:00 AM", ages: "All", activity: "Mindfulness & Yoga", online: true, video: "https://www.youtube.com/embed/8tq8f71Fq3g" },
+        { time: "3:00 PM", ages: "All", activity: "Community Project", online: false }
+    ]
+};
+
+function updateSchedule() {
+    scheduleGrid.innerHTML = `
+        <div class="font-bold p-2 bg-gray-100">Time</div>
+        <div class="font-bold p-2 bg-gray-100">Monday</div>
+        <div class="font-bold p-2 bg-gray-100">Tuesday</div>
+        <div class="font-bold p-2 bg-gray-100">Wednesday</div>
+        <div class="font-bold p-2 bg-gray-100">Thursday</div>
+        <div class="font-bold p-2 bg-gray-100">Friday</div>
+        <div class="font-bold p-2 bg-gray-100">Saturday</div>
+        <div class="font-bold p-2 bg-gray-100">Sunday</div>
+    `;
+
+    const allTimeSlots = [...new Set(Object.values(scheduleData).flatMap(day => day.map(activity => activity.time)))].sort();
+
+    allTimeSlots.forEach(time => {
+        const row = document.createElement('div');
+        row.className = 'contents';
+        row.innerHTML = `<div class="p-2 border-t">${time}</div>`;
+
+        Object.keys(scheduleData).forEach(day => {
+            const activity = scheduleData[day].find(a => a.time === time);
+            if (activity) {
+                const cellContent = `
+                    <div class="bg-purple-100 p-2 rounded">
+                        <p class="font-bold">${activity.activity}</p>
+                        <p class="text-sm">Ages: ${activity.ages}</p>
+                        ${activity.online ? '<p class="text-sm text-blue-600">Online Activity</p>' : ''}
+                        ${activity.online ? `<button class="mt-2 bg-blue-500 text-white px-2 py-1 rounded text-sm watch-video" data-video="${activity.video}">Watch Video</button>` : ''}
+                    </div>
+                `;
+                row.innerHTML += `<div class="border-t p-2">${cellContent}</div>`;
+            } else {
+                row.innerHTML += '<div class="border-t p-2"></div>';
+            }
+        });
+
+        scheduleGrid.appendChild(row);
+    });
+
+    weekStartDate.textContent = currentWeekStart.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+    // Add event listeners for video buttons
+    document.querySelectorAll('.watch-video').forEach(button => {
+        button.addEventListener('click', function() {
+            const videoUrl = this.getAttribute('data-video');
+            const videoModal = document.createElement('div');
+            videoModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            videoModal.innerHTML = `
+                <div class="bg-white p-4 rounded-lg max-w-3xl w-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold">Activity Video</h3>
+                        <button class="close-modal text-2xl">&times;</button>
+                    </div>
+                    <div class="aspect-w-16 aspect-h-9">
+                        <iframe src="${videoUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(videoModal);
+
+            videoModal.querySelector('.close-modal').addEventListener('click', () => {
+                document.body.removeChild(videoModal);
+            });
+        });
+    });
+}
+
+prevWeekBtn.addEventListener('click', () => {
+    currentWeekStart.setDate(currentWeekStart.getDate() - 7);
+    updateSchedule();
+});
+
+nextWeekBtn.addEventListener('click', () => {
+    currentWeekStart.setDate(currentWeekStart.getDate() + 7);
+    updateSchedule();
+});
+
+// Initialize the schedule
+updateSchedule();
+
+
+</script>
 </body>
 </html>
